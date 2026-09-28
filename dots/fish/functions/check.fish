@@ -1,0 +1,3 @@
+function check
+    cat /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor
+end

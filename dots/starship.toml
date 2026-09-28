@@ -1,0 +1,126 @@
+# Lumi prompt: quiet, two lines.
+#   ~/Projects/LumiShell  main ●                                  󰒃 tor · Sweden   4s
+#   ❯
+# Colours are ANSI names, so they follow the Lumi colour scheme.
+
+add_newline = true
+continuation_prompt = "[·](bright-black) "
+
+format = """
+$username$hostname$directory$git_branch$git_state$git_status$python$nodejs$rust$golang$java$c$docker_context\
+$fill\
+${custom.privacy}$cmd_duration$jobs
+$character"""
+
+[fill]
+symbol = " "
+
+# Only shown over ssh or as root, so a normal session stays anonymous
+[username]
+show_always = false
+style_user = "bright-black"
+style_root = "bold red"
+format = "[$user]($style)[@](bright-black)"
+
+[hostname]
+ssh_only = true
+style = "bright-black"
+format = "[$hostname]($style) "
+
+[directory]
+style = "bold blue"
+read_only = " 󰌾"
+read_only_style = "red"
+truncation_length = 3
+truncation_symbol = "…/"
+truncate_to_repo = false
+home_symbol = "~"
+format = "[$path]($style)[$read_only]($read_only_style) "
+
+[git_branch]
+symbol = " "
+style = "purple"
+format = "[$symbol$branch]($style) "
+
+[git_state]
+style = "yellow"
+format = "[$state( $progress_current/$progress_total)]($style) "
+
+[git_status]
+style = "bright-black"
+format = "([$all_status$ahead_behind]($style) )"
+conflicted = "[=](red)"
+modified = "[●](yellow)"
+staged = "[●](green)"
+untracked = "[?](bright-black)"
+deleted = "[✕](red)"
+renamed = "[»](yellow)"
+stashed = "[≡](bright-black)"
+ahead = "[⇡$count](green)"
+behind = "[⇣$count](red)"
+diverged = "[⇕](red)"
+
+[python]
+symbol = " "
+style = "yellow"
+format = "[$symbol($virtualenv )]($style)"
+detect_extensions = []
+
+[nodejs]
+symbol = " "
+style = "green"
+format = "[$symbol$version]($style) "
+
+[rust]
+symbol = " "
+style = "red"
+format = "[$symbol$version]($style) "
+
+[golang]
+symbol = " "
+style = "cyan"
+format = "[$symbol$version]($style) "
+
+[java]
+symbol = " "
+style = "red"
+format = "[$symbol$version]($style) "
+
+[c]
+symbol = " "
+style = "blue"
+format = "[$symbol$version]($style) "
+
+[docker_context]
+symbol = " "
+style = "cyan"
+format = "[$symbol$context]($style) "
+
+# Security status from Lumi: a shield when traffic goes through Tor or a VPN
+[custom.privacy]
+command = """
+read -r kind detail < "${XDG_STATE_HOME:-$HOME/.local/state}/lumi/privacy-status"
+case "$kind" in
+    tor|vpn) printf '󰒃 %s%s' "$kind" "${detail:+ · $detail}" ;;
+    offline) printf '󰖪 offline' ;;
+esac
+"""
+when = """test -s "${XDG_STATE_HOME:-$HOME/.local/state}/lumi/privacy-status" """
+shell = ["sh"]
+style = "green"
+format = "[$output]($style) "
+
+[cmd_duration]
+min_time = 2000
+style = "bright-black"
+format = "[ $duration]($style) "
+
+[jobs]
+symbol = "󰜎 "
+style = "bright-black"
+format = "[$symbol$number]($style) "
+
+[character]
+success_symbol = "[❯](bold blue)"
+error_symbol = "[❯](bold red)"
+vimcmd_symbol = "[❮](bold green)"

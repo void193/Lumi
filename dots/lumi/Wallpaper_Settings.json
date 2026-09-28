@@ -1,0 +1,9 @@
+{
+    "disableAnimations": false,
+    "animationDuration": 500,
+    "behaviorEnabled": true,
+    "batteryLimitEnabled": true,
+    "batteryLimit": 40,
+    "pauseOnFullscreen": true,
+    "pauseOnGameMode": true
+}

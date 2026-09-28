@@ -1,0 +1,144 @@
+{
+    "appearance": {
+        "padding": {
+            "scale": 0.85
+        },
+        "rounding": {
+            "scale": 0.9
+        },
+        "spacing": {
+            "scale": 0.85
+        },
+        "transparency": {
+            "base": 0.78,
+            "enabled": true,
+            "layers": 0.35
+        }
+    },
+    "bar": {
+        "activeWindow": {
+            "compact": true,
+            "showOnHover": true
+        },
+        "clock": {
+            "background": false,
+            "showDate": false,
+            "showIcon": false
+        },
+        "persistent": false,
+        "popouts": {
+            "activeWindow": true
+        },
+        "showOnHover": true,
+        "statusIcons": [
+            {
+                "enabled": true,
+                "id": "privacy"
+            },
+            {
+                "enabled": false,
+                "id": "lockStatus"
+            },
+            {
+                "enabled": false,
+                "id": "audio"
+            },
+            {
+                "enabled": false,
+                "id": "microphone"
+            },
+            {
+                "enabled": false,
+                "id": "kbLayout"
+            },
+            {
+                "enabled": true,
+                "id": "network"
+            },
+            {
+                "enabled": true,
+                "id": "bluetooth"
+            },
+            {
+                "enabled": true,
+                "id": "battery"
+            }
+        ],
+        "tray": {
+            "background": false,
+            "compact": true
+        },
+        "workspaces": {
+            "activeTrail": false,
+            "occupiedBg": false,
+            "showWindows": false
+        }
+    },
+    "border": {
+        "rounding": 18,
+        "thickness": 5
+    },
+    "launcher": {
+        "useFuzzy": {
+            "wallpapers": false
+        }
+    },
+    "lock": {
+        "hideNotifs": true
+    },
+    "services": {
+        "clipboardClearDelay": 0
+    },
+    "sidebar": {
+        "dragThreshold": 85,
+        "enabled": true,
+        "showOnHover": true
+    },
+    "utilities": {
+        "cards": {
+            "keepAwake": true,
+            "quickToggles": true
+        },
+        "quickToggles": [
+            {
+                "enabled": true,
+                "id": "wifi"
+            },
+            {
+                "enabled": true,
+                "id": "bluetooth"
+            },
+            {
+                "enabled": true,
+                "id": "mic"
+            },
+            {
+                "enabled": true,
+                "id": "settings"
+            },
+            {
+                "enabled": true,
+                "id": "gameMode"
+            },
+            {
+                "enabled": true,
+                "id": "dnd"
+            },
+            {
+                "enabled": true,
+                "id": "nightLight"
+            },
+            {
+                "enabled": false,
+                "id": "vpn"
+            }
+        ],
+        "toasts": {
+            "capsLockChanged": true,
+            "chargingChanged": true,
+            "configLoaded": true,
+            "kbLayoutChanged": true,
+            "numLockChanged": true
+        }
+    }
+}
