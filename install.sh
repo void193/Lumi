@@ -15,6 +15,11 @@
 
 set -Eeuo pipefail
 
+# Don't rely on the login environment (su, scripts and containers may not set these)
+USER=${USER:-$(id -un)}
+HOME=${HOME:-$(getent passwd "$USER" | cut -d: -f6)}
+export USER HOME
+
 REPO_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 DOTS="$REPO_DIR/dots"
 SHELL_REPO="https://github.com/void193/LumiShell.git"
