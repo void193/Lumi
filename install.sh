@@ -52,7 +52,7 @@ REPO_PKGS=(
     foot fish starship eza zoxide direnv thunar firefox btop fuzzel
 
     # Clipboard, screenshots, notifications
-    wl-clipboard cliphist grim slurp swappy libnotify trash-cli
+    wl-clipboard cliphist wtype jq grim slurp swappy libnotify trash-cli pciutils
 
     # Look and feel
     ttf-jetbrains-mono-nerd ttf-cascadia-code-nerd ttf-material-symbols-variable
@@ -71,7 +71,7 @@ REPO_PKGS=(
 # AUR packages (built with yay or paru)
 AUR_PKGS=(
     quickshell-git qt6-m3shapes-git libcava python-materialyoucolor ttf-rubik-vf
-    qtengine darkly-bin pwvucontrol bibata-cursor-theme-bin
+    qtengine darkly-bin pwvucontrol bibata-cursor-theme-bin vscodium-bin
 )
 
 # ---------------------------------------------------------------------------

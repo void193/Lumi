@@ -203,7 +203,7 @@ create_bind(vars.kbClipboardDel, hl.dsp.exec_cmd("lumi clipboard -d"))
 create_bind(vars.kbEmoji, hl.dsp.exec_cmd("lumi emoji -p"))
 create_bind(
     vars.kbClipboardPasteLatest,
-    hl.dsp.exec_cmd('sleep 0.5s && ydotool type -d 1 "$(cliphist list | head -1 | cliphist decode)"'),
+    hl.dsp.exec_cmd('sleep 0.5s && wtype -d 1 -- "$(cliphist list | head -1 | cliphist decode)"'),
     locked
 )
 

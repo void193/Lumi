@@ -70,7 +70,7 @@ return {
     volumeMax                  = 100,
     cursorTheme                = "Bibata-Modern-Ice",
     cursorSize                 = 24,
-    sleepGestureCmd            = "systemctl suspend-then-hibernate",
+    sleepGestureCmd            = "systemctl suspend",
 
     ------------------
     ---- KEYBINDS ----
