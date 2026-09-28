@@ -339,8 +339,11 @@ step "Enabling services"
 sudo systemctl enable --now NetworkManager.service
 sudo systemctl enable --now bluetooth.service
 sudo systemctl enable --now power-profiles-daemon.service
-# iwd and NetworkManager fight over Wi-Fi; NetworkManager wins
-if systemctl is-enabled iwd.service >/dev/null 2>&1; then
+# A standalone iwd fights NetworkManager over Wi-Fi, but NetworkManager can also use
+# iwd as its Wi-Fi backend (an archinstall option); then iwd must keep running
+if grep -rqs '^\s*wifi\.backend\s*=\s*iwd' /etc/NetworkManager/NetworkManager.conf /etc/NetworkManager/conf.d/; then
+    info "NetworkManager uses iwd for Wi-Fi, keeping iwd enabled"
+elif systemctl is-enabled iwd.service >/dev/null 2>&1; then
     sudo systemctl disable --now iwd.service || true
     info "Disabled iwd (NetworkManager manages Wi-Fi now)"
 fi
