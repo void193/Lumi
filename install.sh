@@ -35,7 +35,12 @@ REPO_PKGS=(
 
     # Hyprland and desktop plumbing
     hyprland hyprpicker hypridle hyprsunset xdg-desktop-portal-hyprland xdg-desktop-portal-gtk
-    polkit polkit-gnome gnome-keyring gvfs udisks2 dconf
+    polkit polkit-gnome gnome-keyring dconf
+
+    # USB drives and phones in the file manager: mounting, auto-mount, thumbnails,
+    # and tools for FAT/exFAT/NTFS drives
+    gvfs gvfs-mtp gvfs-gphoto2 udisks2 thunar-volman tumbler ffmpegthumbnailer
+    dosfstools exfatprogs ntfs-3g
 
     # Network, bluetooth, power
     networkmanager bluez bluez-utils power-profiles-daemon
@@ -304,6 +309,14 @@ for f in "$DOTS"/lumi/*; do
     install_file "$f" "$CONFIG/lumi/$(basename "$f")"
 done
 chmod +x "$CONFIG/lumi/projector.sh"
+
+# Thunar: mount drives and media automatically when they're plugged in
+if command -v xfconf-query >/dev/null; then
+    for prop in /automount-drives/enabled /automount-media/enabled; do
+        xfconf-query -c thunar-volman -p "$prop" -n -t bool -s true 2>/dev/null ||
+            xfconf-query -c thunar-volman -p "$prop" -s true 2>/dev/null || true
+    done
+fi
 
 [[ -d $BACKUP ]] && ok "Previous configs backed up to $BACKUP"
 ok "Configuration installed"

@@ -452,6 +452,27 @@ Lumi's Bluetooth toggle also clears the block for you.
 </details>
 
 <details>
+<summary><b>A USB drive or phone doesn't show up in the file manager</b></summary>
+
+Thunar needs gvfs to show and mount removable drives:
+
+```sh
+sudo pacman -S --needed gvfs gvfs-mtp udisks2 thunar-volman tumbler exfatprogs ntfs-3g dosfstools
+thunar -q                          # restart the file manager
+```
+
+The drive then appears in Thunar's sidebar; click it to mount. To mount one by hand:
+
+```sh
+lsblk                              # find it, e.g. sda1
+udisksctl mount -b /dev/sda1       # mounts at /run/media/$USER/<label>
+udisksctl unmount -b /dev/sda1     # before pulling it out
+```
+
+Phones: unlock the phone and pick *File transfer* in its USB notification.
+</details>
+
+<details>
 <summary><b>Wrong screen resolution, scaling or an external monitor</b></summary>
 
 `hyprctl monitors` lists the screens. Add a line to `~/.config/lumi/hypr-user.lua`, for example:
